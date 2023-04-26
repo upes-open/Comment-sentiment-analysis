@@ -1,0 +1,3 @@
+pip install google-api-python-client google-auth
+variable for api:
+API_KEY
