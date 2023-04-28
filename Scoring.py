@@ -3,16 +3,19 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
+import extract
 
 # Create an instance of the SentimentIntensityAnalyzer
 sia = SentimentIntensityAnalyzer()
+
+comments = extract.fetch_comments("https://www.youtube.com/watch?v=ePL5YSe2kLw")
 
 # Iterate through the rows of the DataFrame and apply sentiment analysis on each row
 def scoring(df):
     new=[]
     for index, row in df.iterrows():
         # Extract the text from the "text" column of the current row
-        text = row["Text"]
+        text = row["comment"]
         # Apply the sentiment analysis method on the text and append the results to a list
         scores = sia.polarity_scores(text)
         new.append(scores)
